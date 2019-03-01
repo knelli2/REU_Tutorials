@@ -1,0 +1,444 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+\author{Patchara Wongsutthikoson}
+\title{Illinois Relativity Group Data Location}
+\maketitle
+
+This document specifies the location of the selected simulation data produced by the Illinois Relativity Group. Most of our data are in HDF5 format -- this includes magnetic field (Bx.file\_*.h5, By.file\_*.h5, and Bz.file\_*.h5), matter density (rho\_b.file\_*.h5), velocity (vx.file\_*.h5, vy.file\_*.h5, and vz.file\_*.h5), pressure (P.file\_*.h5), and magnetic field magnitude $B^2/4\pi$ (smallb2.file\_*.h5). All of the HDF5 files are stored in folders with the name in pattern of 3d\_data\_XXXXXX, where "XXXXXX" indicates the date data was generated. Black hole horizon data and gravitational wave data are not in HDF5 format. Black hole data are in .gp files. Particle data are in bhns-particles.mon files. Gravitational wave data are in Psi4\_rad.mon.* files, which will require Zack's code to extract $h_+$ and $h_\times$ data. Zack's code can be found at \\ \verb|Nearline: /projects/sciteam/bakp/Zack_code.tar.gz|. \\
+You will need the extraction radii for each Psi4 files, which can be found in the parameter files (*.par).
+
+
+% Please note that in some case that the parameter K is not equal to 1, i.e. LORENE's data, you will need to modify Psi4 data to correct h\_plus and h\_cross values.
+
+
+
+
+% \section{Relativistic Simulations of Black Hole-Neutron Star Coalescence: The Jet Emerges (2015)}
+% 
+% Here are the main directories to the data. I will refer to these paths as \verb|<rootdir>|. Estimated total size is 1.1 TB.\\
+% \\
+% \verb|BlueWaters: /u/sciteam/ruiz1/scratch/Ben/beta10/| \\
+% 
+% Parameter file
+% 
+% \verb|BlueWaters: /u/sciteam/ruiz1/scratch/Ben/beta10/carptest2.par| \\
+% **** We are transferring the data from Ranch storage to BlueWaters. All data should be in the specified location before June 2017. The details will be updated once we complete the transferring.
+
+
+
+
+
+\section{Working with time}
+
+In our simulations, we will refer to the time in code units (t) and iteration number (it). The time step between each frame in the visualization will be limited by the output frequency of the HDF5 files, which can be checked by reading any HDF5 file with the command "\verb|h5ls <filename>|". The HDF5 output frequency is usually every it=256. The output frequency of black hole's horizon data (.gp files) is different and will be more frequent than HDF5 files. The time for each horizon data can be easily determined from the filename. For example, the file \verb|h.t135200.ah2.gp| is the horizon data for 2nd black hole at it=135200. The time used in the particle data will be in code units. The content of the bhns-particles.mon file is listed in four tab-separated columns: t, x, y, and z position of the particles. The relationship between code unit time and iteration number is found using the first and second columns in \verb|BH_diagnostics.ah1.gp|. Alternatively, we can find the relation between t and it by loading a HDF5 file into VisIt and checking the time in the file information window.
+
+In our visualization, we represent the time in t/M. The relation between t/M and code unit time (t) is \[ t/M = t/M_{ADM} , \] where $M_{ADM}$ is the ADM mass of the system. The value of $M_{ADM}$ for each simulation will be listed in the following sections.
+
+
+
+\section{Binary Black Hole Merger Simulations: LIGO Source GW150914 (2016)}
+
+Website: \url{http://research.physics.illinois.edu/cta/movies/bhbh_sim/} \\
+$M_{ADM} = 1.000$
+
+\subsection{Data Location}
+Here are the main directories to the data. I will refer to these paths as \verb|<rootdir>|. Estimated total size is 5 TB.\\
+
+\underline{Case A: No Spin} \\
+	\verb|Nearline: /projects/sciteam/bakp/joh/vpaschal/BHBH_vac/GW150914_large_sep_nospin/| \\
+
+\underline{Case B: Aligned Spin} \\
+	\verb|Nearline: /projects/sciteam/bakp/joh/vpaschal/BHBH_vac/GW150914_large_sep_aligned/| \\
+
+\underline{Case C: Unaligned Spin} \\
+	\verb|Nearline: /projects/sciteam/bakp/joh/vpaschal/BHBH_vac/GW150914_large_sep_misaligned/| \\
+
+Black holes horizon data (h.t*.ah1.gp files for the 1st BH and h.t*.ah2.gp files for the 2nd BH) are located in
+	
+	\verb|<rootdir>/ABE-bbh-output/| \\
+Gravitational wave data are in the files
+
+	\verb|<rootdir>/Psi4_rad.mon.*| \\
+Parameter values are in the file
+
+	\verb|<rootdir>/carptest1-lr.par| \\
+More details can be found in the files
+	
+	\verb|<rootdir>/ABE-bbh-output/BH_diagnostics.ah*.gp|
+
+\subsection{Correlation with the Movies}
+\underline{Case A: No Spin} \\
+\\
+BHBH Evolution Movie \\
+url: \url{http://research.physics.illinois.edu/cta/movies/bhbh_sim/intro_a.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 2:20	& Black holes horizon \\
+\end{tabular}
+\\
+\\
+Gravitational Wave Movie \\
+url: \url{http://research.physics.illinois.edu/cta/movies/bhbh_sim/gw_a.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:52	& Black holes horizon, gravitational wave($h_\times$) \\
+\end{tabular}
+\\
+\\
+\underline{Case B: Aligned Spin} \\
+\\
+BHBH Evolution Movie \\
+url: \url{http://research.physics.illinois.edu/cta/movies/bhbh_sim/intro_b.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 3:05	& Black holes horizon \\
+\end{tabular}
+\\
+\\
+Gravitational Wave Movie \\
+url: \url{http://research.physics.illinois.edu/cta/movies/bhbh_sim/gw_b.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:54	& Black holes horizon, gravitational wave($h_\times$) \\
+\end{tabular}
+\\
+\\
+\underline{Case C: Unaligned Spin} \\
+\\
+BHBH Evolution Movie \\
+url: \url{http://research.physics.illinois.edu/cta/movies/bhbh_sim/intro_c.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 2:51	& Black holes horizon \\
+\end{tabular}
+\\
+\\
+Gravitational Wave Movie \\
+url: \url{http://research.physics.illinois.edu/cta/movies/bhbh_sim/gw_c.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:55	& Black holes horizon, gravitational wave($h_\times$) \\
+\end{tabular}
+
+
+
+
+
+% \section{Binary Neutron Star Mergers: A Jet Engine for Short Gamma-Ray Bursts (2016)}
+%
+% Here are the main directories to the data. I will refer to these paths as \verb|<rootdir>|. Estimated total size is 11 TB. \\
+%
+% int\&ext: \\
+% 	\verb|Nearline: /projects/sciteam/bakp/joh/vpaschal/NSNS_high_0.25xB_b/| \\
+% 
+% int only: \\
+% 	\verb|Nearline: /projects/sciteam/bakp/joh/ruizm/NSNS_05x_high/| \\
+% 
+% The data for density, B-field, velocity, etc. (*.h5 files) are located in
+% 
+% 	\verb|<rootdir>/beta100/| \\
+% The black hole horizon data (h.t*.ah1.gp files) are located in
+%	
+% 	\verb|<rootdir>/| \\
+% The data for particles (for B-field seeding points or fluid elements tracking) are in the file 
+%
+%	\verb|<rootdir>/bhns-particles.mon| \\
+% The center of NSs for all time are listed in the file
+%	
+%	\verb|<rootdir>/bhns.xon| \\
+% Gravitational wave data are in the files
+%	
+%	\verb|<rootdir>/Psi4_rad.mon.*| \\
+% Parameter file
+%
+%	\verb|<root-dir>/nsnstest2.par| \\
+% More details can be found in the flie
+%	
+%	\verb|<rootdir>/beta100/BH_diagnostics.ah1.gp|
+
+
+
+
+
+\newpage
+\section{Magnetorotational Collapse of Supermassive Stars: Black Hole Formation and Jets (2017)}
+
+Website: \url{http://research.physics.illinois.edu/cta/movies/SMS_2016/} \\
+Paper: \url{https://arxiv.org/pdf/1704.04502.pdf} \\
+$M_{ADM} = 4.572$ \\
+$\rho_{max}(0) = 0.0000000077539552478$ \\
+
+The maximum density at the beginning, $\rho_{max}(0)$, is used for normalization in our density movies.
+
+\subsection{Data Location}
+Estimated total size is 6 TB. \\
+
+\subsubsection{Zero B-field Case} 
+Here are the main directories to the data. I will refer to these paths as \verb|<rootdir>|. \\
+
+Before BH (Level 0-5) -- Total size 0.5TB: \\
+	\verb|Nearline: /projects/sciteam/bakp/lsun11/evolve/run1/| \\
+	\verb|Nearline: /projects/sciteam/bakp/lsun11/8nodes_first/SMS_regrid_1_8nodes/| \\
+	\verb|Nearline: /projects/sciteam/bakp/lsun11/second/SMS_regrid_2/| \\
+	\verb|Nearline: /projects/sciteam/bakp/lsun11/third/SMS_regrid_3/| \\
+	\verb|Nearline: /projects/sciteam/bakp/lsun11/fourth/SMS_regrid_4/| \\
+	\verb|Nearline: /projects/sciteam/bakp/lsun11/fifth/SMS_regrid_5/| \\
+	
+After BH -- Total size 1.5TB: \\
+	\verb|Nearline: /projects/sciteam/bakp/lsun11/PURE_HYDRO_TEST_Speed_Limit_25_20M_escaping_mass/| \\
+
+Level indicates different regridding runs. Higher numbers correspond to later times in the run, which have more refined meshes. The data for density, B-field, and velocity (.h5 files) are located in
+	
+	\verb|<rootdir>/3d_data_XXXXXX/|   \\
+where \verb|<rootdir>| is the directory indicated above. The black hole horizon data (h.t*.ah1.gp files) are located in
+	
+	\verb|<rootdir>/| \\
+The data for particles (for B-field seeding points or fluid elements tracking) are in the file 
+	
+	\verb|<rootdir>/bhns-particles.mon| \\
+Parameter values are in the files
+
+	\verb|<rootdir>/nsnstest2_hr.par| \\
+Gravitational wave data are in the files
+
+	\verb|<rootdir>/Psi4_rad.mon.* | \\
+
+
+\subsubsection{Interior-Only B-field Case}
+Here are the main directories to the data. I will refer to these paths as \verb|<rootdir>|. Estimated total size is 2 TB \\
+
+Before BH (Level 0-4) -- Total size 0.5TB: \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse_int/0/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse_int/1/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse_int/2/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse_int/3/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse_int/4/| \\
+	
+After BH -- Total size 1.7TB: \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/int/| \\
+
+For before BH, level indicates different regridding runs. Higher numbers correspond to later times in the run, which have more refined meshes. The data for density, B-field, and velocity (.h5 files) are located in
+	
+	\verb|<rootdir>/beta100/3d_data_XXXXXX/|   \\
+where \verb|<rootdir>| is the directory indicated above for each level. \\
+
+For after BH, the data for density, B-field, and velocity (*.h5 files) are located in 
+	
+	\verb|<rootdir>/h5data/| \\
+The black hole horizon data (h.t*.ah1.gp files) are located in
+	
+	\verb|<rootdir>/h5data/horizon/all_horizon/| \\
+	
+For both before BH and after BH, the data for particles (for B-field seeding points or fluid elements tracking) are in the file 
+	
+	\verb|<rootdir>/particle_code/bhns-particles.mon| \\
+Parameter values are in the files
+
+	\verb|<rootdir>/nsnstest2_hr.par| \\ 
+Gravitational wave data are in the files
+
+	\verb|<rootdir>/Psi4.mon.sort.*| \\ 
+Alternatively, we extract the gravitational wave data into .vtk files for both $h_+$ and $h_\times$ mode. They can be found in the directory: \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/int_GW/| \\
+
+
+\subsubsection{Interior and Exterior B-field Case}
+Here are the main directories to the data. I will refer to these paths as \verb|<rootdir>|. Estimated total size is 2 TB \\
+
+Before BH (Level 0-5) -- Total size 0.5TB: \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse/0/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse/1/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse/2/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse/3/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse/4/| \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/before_collapse/5/| \\
+	
+After BH -- Total size 1.5TB: \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/ext_int/| \\
+
+
+For before BH, level indicates different regridding runs. Higher numbers correspond to later times in the run, which have more refined meshes. The data for density, B-field, and velocity (.h5 files) are located in
+	
+	\verb|<rootdir>/beta100/3d_data_XXXXXX/|   \\
+where \verb|<rootdir>| is the directory indicated above for each level. \\
+
+For after BH, the data for density, B-field, and velocity (*.h5 files) are located in 
+	
+	\verb|<rootdir>/h5data/| \\
+The black hole horizon data (h.t*.ah1.gp files) are located in
+	
+	\verb|<rootdir>/h5data/horizon/all_horizon/| \\
+	
+For both before BH and after BH, the data for particles (for B-field seeding points or fluid elements tracking) are in the file 
+	
+	\verb|<rootdir>/particle_code/bhns-particles.mon| \\
+Parameter values are in the files
+
+	\verb|<rootdir>/nsnstest2_hr.par| \\ 
+Gravitational wave data are in the files
+
+	\verb|<rootdir>/Psi4.mon.sort.*| \\ 
+Alternatively, we extract the gravitational wave data into .vtk files for both $h_+$ and $h_\times$ mode. They can be found in the directory: \\
+	\verb|Nearline: /projects/sciteam/bakp/wongsutt/Lunan/ext_int_GW/| \\
+
+\subsection{Starting Time}
+
+In this simulation, after each regridding the time will be reset and start at zero again. To get the cumulative time from the beginning, we need to add the time in current regridding level with the starting time of the current level. The starting times are provided below. The time increment dt (in code units) between each output is also different between two levels.
+\\
+\\
+\subsubsection{Zero B-field Case}
+\begin{tabular}{l l l}
+Level		& dt (over 256 it)	& Starting time (code units) \\
+0		& 1600			& 0 		\\
+1		& 800			& 76393.548	\\ %16709
+2		& 400			& 99120.960	\\ %21680
+3		& 200			& 116590.572	\\ %25501
+4		& 50			& 126173.484	\\ %27597
+5		& 6.25			& 130393.440	\\ %28520
+After BH 	& 6.25			& 130832.352	\\ %28616
+\end{tabular}
+\\
+\subsubsection{Interior-Only B-field Case}
+\begin{tabular}{l l l}
+Level		& dt (over 256 it)	& Starting time (code units) \\
+0		& 1600			& 0		\\
+1		& 800			& 106897.265	\\
+2		& 400			& 116995.898	\\
+3 		& 200			& 127733.398	\\
+4		& 50			& 136889.648 	\\
+After BH	& 6.25			& 137627.148 *	\\
+\end{tabular}
+\\
+\\
+** After it=133632 in this level, we halved HDF5 output frequency to output every 512 iterations. Therefore, the time increment between each frame is doubled, i.e. dt (over 512 it) = 12.5. 
+\\
+\subsubsection{Interior and Exterior B-field Case}
+\begin{tabular}{l l l}
+Level		& dt (over 256 it)	& Starting time (code units) \\
+0		& 1600			& 0 		\\
+1		& 800			& 108800	\\
+2		& 400			& 119000	\\
+3		& 200			& 122800	\\
+4		& 50			& 140400	\\
+5		& 6.25			& 141160 *	\\
+After BH	& 6.25			& 141335 **	\\
+\end{tabular}
+\\
+\\
+** This level is not used in the movie we created, since level 4 completely covers the time during level 5. We provide this data just in case it is needed for higher time resolution. \\
+*** Note that the iteration number of the first frame in after bh folder in this case is not zero, but at it=7168. The time at which it=0 for this level corresponds to t=141160.
+
+\subsection{Correlation with the Movies}
+\subsubsection{Zero B-field Case}
+
+\underline{Density Evolution Movie} \\
+url: \url{http://research.physics.illinois.edu/cta/movies/SMS_2016/density_hydro.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:26	& Level 0 - density \\
+0:26 - 0:31	& Level 1 - density \\
+0:31 - 0:38	& Level 2 - density \\
+0:38 - 0:55	& Level 3 - density \\
+0:55 - 1:25	& Level 4 - density \\
+1:25 - 1:26	& Level 5 - density \\
+1:26 - 2:35	& After BH - density, BH horizon \\
+2:35 - 2:54	& After BH - density, velocity, BH horizon \\
+2:54 - 3:44	& After BH - density(sliced), BH horizon \\
+3:44 - 3:53	& After BH - density(sliced), velocity, BH horizon \\
+\end{tabular}
+\\
+\\
+\underline{Lagrangian Matter Tracer Movie} \\
+url: \url{http://research.physics.illinois.edu/cta/movies/SMS_2016/particles_hydro.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:08	& After BH - density(sliced), particles, BH horizon \\
+\end{tabular}
+
+\subsubsection{Interior-Only B-field Case}
+
+\underline{Density and Magnetic Field Movie} \\
+url: \url{http://research.physics.illinois.edu/cta/movies/SMS_2016/density_int.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:25	& Level 0 - density, magnetic field, particles(B-field seeding points) \\
+0:25 - 0:34	& Level 1 - density, magnetic field, particles(B-field seeding points) \\
+0:34 - 0:44	& Level 2 - density, magnetic field, particles(B-field seeding points) \\
+0:44 - 1:00	& Level 3 - density, magnetic field, particles(B-field seeding points) \\
+1:00 - 1:18	& Level 4 - density, magnetic field, particles(B-field seeding points) \\
+1:18 - 2:33	& After BH - density, magnetic field, BH horizon \\
+2:33 - 2:49	& After BH - density, magnetic field, velocity, BH horizon \\
+2:49 - 3:46	& After BH - density(sliced), magnetic field, BH horizon \\
+3:46 - 3:56	& After BH - density(sliced), magnetic field, velocity, BH horizon \\
+\end{tabular}
+\\
+\\
+\underline{Lagrangian Matter Tracer Movie} \\
+url: \url{http://research.physics.illinois.edu/cta/movies/SMS_2016/particles_int.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:24	& After BH - density(sliced), magnetic field, particles, BH horizon \\
+\end{tabular}
+\\
+\\
+\underline{Gravitational Wave Movie} \\
+url: \url{http://research.physics.illinois.edu/cta/movies/SMS_2016/gw_int.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:56	& gravitational wave($h_+$), After BH - density, BH horizon \\
+\end{tabular}
+
+\subsubsection{Interior and Exterior B-field Case} 
+
+\underline{Density and Magnetic Field Movie} \\
+url: \url{http://research.physics.illinois.edu/cta/movies/SMS_2016/density_ext.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data Using \\
+0:00 - 0:30	& Level 0 - density, magnetic field, particles(B-field seeding points) \\
+0:30 - 0:40	& Level 1 - density, magnetic field, particles(B-field seeding points) \\
+0:40 - 0:49	& Level 2 - density, magnetic field, particles(B-field seeding points) \\
+0:49 - 1:12	& Level 3 - density, magnetic field, particles(B-field seeding points) \\
+1:12 - 1:36	& Level 4 - density, magnetic field, particles(B-field seeding points) \\
+1:36 - 2:42	& After BH - density, magnetic field, BH horizon \\
+2:42 - 3:01	& After BH - density, magnetic field, velocity, BH horizon \\
+3:01 - 3:51	& After BH - density(sliced), magnetic field, BH horizon \\
+3:51 - 4:02	& After BH - density(sliced), magnetic field, velocity, BH horizon \\
+\end{tabular}
+\\
+\\
+\underline{Lagrangian Matter Tracer Movie} \\
+url: \url{http://research.physics.illinois.edu/cta/movies/SMS_2016/particles_ext.html} \\
+\\
+\begin{tabular}{l l}
+Time		& Data using \\
+0:00 - 0:22	& After BH - density(sliced), magnetic field, particles, BH horizon \\
+\end{tabular}
+
+
+
+%TODO: Transferring pure hydro data.
+
+
+
+
+
+
+\end{document}
+
+
