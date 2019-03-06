@@ -12,7 +12,8 @@
 \title{REU Tutorial 2017}
 
 
-\author{Abid Khan, Sean Connelly, Cunwei Fan, and Patchara Wongsutthikoson\\Edited: Eric Connelly, Imran Sultan}
+\author{Abid Khan, Sean Connelly, Cunwei Fan, and Patchara Wongsutthikoson\\
+	Edited: Eric Connelly, Imran Sultan}
 
 
 
@@ -27,55 +28,42 @@ Previous incoming students have typically completed this tutorial in a few weeks
 
 \section{Accounts and Keys}
 One of the senior members will join you to get this section done.
-You can take your time, but getting keys quickly may make your life easier.
+You can take your time, but getting these done quickly will make your life easier.
     \begin{itemize}
         \item Get keys for Loomis and the REU office.
         \item Talk to Rebecca Wiltfong (rwiltfon@illinois.edu, 290L LLP) about permissions for the REU webpage.
-	\item Get your Blue Waters Token and have the account activated. You should have gotten an 
-		email about it. Talk to Milton Ruiz (setisam@gmail.com) if you come across troubles.
+	\item Get your Blue Waters Token and have the account activated. You should have gotten an email about it. Talk to Milton Ruiz (setisam@gmail.com) if you come across troubles.
     \end{itemize}
 
 \section{Linux}
-    	This group uses Linux exclusively. Over the years, you will learn to master it and eventually 
-	prefer it over any other operating system. The following commands are essential, so please review them
+    	This group uses Linux exclusively. Over the years, you will learn to use it and eventually prefer it over any other operating system. One of the most important and powerful tools you will need to master on Linux is the \textbf{terminal}. How to use terminal will become clear as you work with it. A good way to start is by familiarizing yourselves with the following basic commands (i.e. by googling, etc.): \textbf{cd, ls, mkdir, touch, cp, rm} (be \textit{very careful} with this one). A quick way to learn what a command does is to type \textbf{man \textit{commandname}} into the terminal. \\
+    	After that, you can look at some more useful commands below.
     \begin{description}
-        \item[grep]	This command outputs items that match your input pattern strings.
+	\item[grep]	This command outputs items that match your input pattern strings.
 			It is very useful in finding files and filter the output of another command
 			when used with pipe (|).
-			eg: "grep 1200 foo.txt" will output the lines that has "1200" in file foo.txt.
-
-	\item[pipe (|)] This command makes compound commands available, allowing you to perform more complicated
+			eg: \textbf{grep 1200 foo.txt} will output the lines that has "1200" in file foo.txt.
+			
+        \item[pipe (|)] This command makes compound commands available, allowing you to perform more complicated
 			operations in one command line. It will feed the output of previous command as the input for 
-			the next one. eg: "ls | grep foo", this use the output of ls command as the input for grep
+			the next one. e.g: \textbf{ls | grep foo}, this use the output of ls command as the input for grep
 			command. This command line will display the items in current directory that has pattern string "foo" 
 			in it.
 
 	\item[redirect (>)] This command will redirect the output display to another
-			proper place (we usually use this to output into a text file.
-			eg "echo hello world > new.txt" will create a file new.txt that has "hello
-			world" as its content.
+			proper place (we usually use this to output into a text file.)
+			e.g \textbf{echo hello world > new.txt} will modify the file "new.txt" (or make a new file "new.txt", if it doesn't exist) to have "hello world" as its content.
+			Note that ">" erases the file before writing, while ">{}>" appends to it.
 
-	\item[sed] 	Short for `stream editor'. 
-			This is a very powerful string editing tool which allows you to perform text deleting and modifying operations.
-           		Refer to http://sed.sourceforge.net/sed1line.txt to receive your magical powers.
-
-        \item[awk] 	Technically a programming language, but incredibly useful for editing text files. 
-	       		Ubiquitous in Unix-like systems. This command allows you to perform
-			data extraction based on patterns. A simple of way of using it will be 
-			"awk '{print \$2}'" (please notice here it has to be the single quote mark (') 
-			in command option). This command will extract the second field (column) of each line 
-			that are sperated by whitespace.
-       		   	Refer to http://www.pement.org/awk/awk1line.txt to become a wizard.
-        
         \item[sort] 	What do you think it does?
+        
+        \item[uniq]	Delete \textit{consecutive} duplicate lines of a file. See \textbf{awk} for how to delete \textit{non-consecutive} duplicate lines.
 
-	\item[scp] 	At times we will be needing to send files or data to each other for collaboration. 
-			How do we do that? EMAIL?! Where's the fun in that? To send a file from one machine to 
-			another type \\``scp filename colten1@machine.physics.illinois.edu:/home/colten1/Desktop'', 
-			where instead of ``machine'' put in the name of the computer you want to send it to. 
-			Also you can retrieve a file from another machine using the same command:\\
-			``scp colten1@machine.physics.illinois.edu:/full/path/to/file .''
-			If you want to transfer a directory instead, put an ``-r'' after scp
+	\item[scp] 	At times we will be needing to send files or data to each other for collaboration. How do we do that? EMAIL?! Where's the fun in that? To send a file from one machine to another type \\
+			\textbf{scp filename colten1@machine.physics.illinois.edu:/home/colten1/Desktop}, \\
+			where instead of ``machine'' put in the name of the computer you want to send it to. Also you can retrieve a file from another machine using the same command:\\
+			\textbf{scp colten1@machine.physics.illinois.edu:/full/path/to/file /path/to/folder} \\
+			If you want to transfer a directory instead, put an \textbf{-r} after scp
 
 	\item[scripting] Bash supports a few simple common functions like for loop
 		 	and if condition.
@@ -85,30 +73,41 @@ You can take your time, but getting keys quickly may make your life easier.
 			down the usage of those function, as most of them you should easily find
 			documentions on google whenever you need them. The only one thing I
 			want mention is that in bash scripts, when you want to refer to a variable
-			you defined earlier, put a dollar sign (\$) in the front. eg. "var=1; echo
-			\$var;"
+			you defined earlier, put a dollar sign (\$) in the front. eg. \textbf{var=1; echo \$var}
 			
 	\item[Vim]	Get familiar with a terminal-based text editor, such as Vim (some alternatives are Emacs and nano).
 			This will come in very handy for quickly reading/editing files. Vim is quite advanced and there's no need to understand
 			everything (\textit{yet}), but do learn the basics, such as editing and saving files (and exiting out of Vim, of course).
-
+			
+			
+	\item[awk (optional)] 	Technically a programming language, but useful for editing text files. 
+	       		Ubiquitous in Unix-like systems. This command allows you to perform
+			data extraction based on patterns. A few simple ways of using it will be 
+			\textbf{awk '{print \$2}'} (print 2nd column of a file), and \textbf{awk '!a[\$0]++'} (remove non-consecutive duplicate lines) \\
+       		   	Refer to http://www.pement.org/awk/awk1line.txt
+       		   	
+	\item[sed (optional)] 	Short for `stream editor'. 
+			This is a very powerful string editing tool which allows you to perform text deleting and modifying operations. \\
+           		Refer to http://sed.sourceforge.net/sed1line.txt
+        
+	
     \end{description}
 
 \subsection{Exercises}
-\begin{enumerate}
-\item use sed command to remove the extention part of the file name. eg. "foo.txt" -> "foo"
-\item Using sed command, remove the first line of a text file.
-\item Using sed command, delete all the lines in a text file that contains a specific pattern (say "NaN")
-\item Count the number of files in a folder
-\item Use sort command (you can look it up on google), sort a text file based on the value in the second 
-	column in each line. So your text file has data a matrix form (multiple rows and multiple columns).
-\item write a bash script that goes through a file and find the max and
+    Quick note: don't spend too much time trying to work these out yourselves if you get stuck; use Google to whenever you need to. These are mainly designed for future reference.
+    \begin{enumerate}
+	\item Use \textbf{wc -l} and \textbf{ls} to count the number of files in a folder.
+	\item Use terminal to remove the extention part of the file name. eg. "foo.txt" -> "foo".
+	\item Use the \textbf{head} and \textbf{tail} command to remove the first and last line of a text file.
+	\item Use \textbf{grep} command to delete all the lines in a text file that contains a specific pattern (say "NaN"). \textit{Hint: \textbf{grep -v}}
+	\item Use sort command (you can look it up on google), sort a text file based on the value in the second column in each line. So your text file has data a matrix form (multiple rows and multiple columns).
+	\item write a bash script that goes through a file and find the max and
 	min value (assume max < 10000 and min > 0) of the data in the
 	third column (hint: awk)
-\item do the same thing in the previous exercise, but this time you are
+	\item do the same thing in the previous exercise, but this time you are
 	provided with a series of files (eg. "foo1.txt", "foo2.txt"...), find the
 	max and min over all these files.
-\item You are given a series of files that are named in numerical order. Write
+	\item You are given a series of files that are named in numerical order. Write
 	a bash scripts that seperate these files into two folders such that odd-
 	numbered files and even-numbered files are separated. Make sure in
 	new folders, the files are still in correct order. (This script is used to
