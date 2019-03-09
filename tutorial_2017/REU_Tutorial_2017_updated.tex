@@ -7,13 +7,15 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+\newcommand{\cd}[1]{\texttt{#1}}
+
 \begin{document}
 
-\title{REU Tutorial 2017}
+\title{REU Tutorial 2019}
 
 
 \author{Abid Khan, Sean Connelly, Cunwei Fan, and Patchara Wongsutthikoson\\
-	Edited: Eric Connelly, Imran Sultan}
+	Edited: Eric Connelly, Imran Sultan, Minh Nguyen}
 
 
 
@@ -36,57 +38,55 @@ You can take your time, but getting these done quickly will make your life easie
     \end{itemize}
 
 \section{Linux}
-    	This group uses Linux exclusively. Over the years, you will learn to use it and eventually prefer it over any other operating system. One of the most important and powerful tools you will need to master on Linux is the \textbf{terminal}. How to use terminal will become clear as you work with it. A good way to start is by familiarizing yourselves with the following basic commands (i.e. by googling, etc.): \textbf{cd, ls, mkdir, touch, cp, rm} (be \textit{very careful} with this one). A quick way to learn what a command does is to type \textbf{man \textit{commandname}} into the terminal. \\
+    	This group uses Linux exclusively. Over the years, you will learn to use it and eventually prefer it over any other operating system. One of the most important and powerful tools you will need to master on Linux is the \textbf{terminal}. How to use terminal will become clear as you work with it. A good way to start is by familiarizing yourselves with the following basic commands (i.e. by googling, etc.): \cd{cd, ls, mkdir, touch, cp, rm} (be \textit{very careful} with this one). A quick way to learn what a command does is to type \cd{man \textbf{commandname}} into the terminal. \\
     	After that, you can look at some more useful commands below.
     \begin{description}
-	\item[grep]	This command outputs items that match your input pattern strings.
+	\item[\cd{grep}]	This command outputs items that match your input pattern strings.
 			It is very useful in finding files and filter the output of another command
 			when used with pipe (|).
-			eg: \textbf{grep 1200 foo.txt} will output the lines that has "1200" in file foo.txt.
+			eg: \cd{grep 1200 foo.txt} will output the lines that has "1200" in file foo.txt.
 			
-        \item[pipe (|)] This command makes compound commands available, allowing you to perform more complicated
+        \item[\cd{pipe (|)}] This command makes compound commands available, allowing you to perform more complicated
 			operations in one command line. It will feed the output of previous command as the input for 
-			the next one. e.g: \textbf{ls | grep foo}, this use the output of ls command as the input for grep
+			the next one. e.g: \cd{ls | grep foo}, this use the output of ls command as the input for grep
 			command. This command line will display the items in current directory that has pattern string "foo" 
 			in it.
 
-	\item[redirect (>)] This command will redirect the output display to another
+	\item[\cd{redirect (>)}] This command will redirect the output display to another
 			proper place (we usually use this to output into a text file.)
-			e.g \textbf{echo hello world > new.txt} will modify the file "new.txt" (or make a new file "new.txt", if it doesn't exist) to have "hello world" as its content.
-			Note that ">" erases the file before writing, while ">{}>" appends to it.
+			e.g \cd{echo hello world > new.txt} will modify the file "new.txt" (or make a new file "new.txt", if it doesn't exist) to have "hello world" as its content.
+			Note that \cd{>} erases the file before writing, while \cd{>{}>} appends to it.
 
-        \item[sort] 	What do you think it does?
+        \item[\cd{sort}] 	What do you think it does?
         
-        \item[uniq]	Delete \textit{consecutive} duplicate lines of a file. See \textbf{awk} for how to delete \textit{non-consecutive} duplicate lines.
+        \item[\cd{uniq}]	Delete \textit{consecutive} duplicate lines of a file. See \cd{awk} for how to delete \textit{non-consecutive} duplicate lines.
 
-	\item[scp] 	At times we will be needing to send files or data to each other for collaboration. How do we do that? EMAIL?! Where's the fun in that? To send a file from one machine to another type \\
-			\textbf{scp filename colten1@machine.physics.illinois.edu:/home/colten1/Desktop}, \\
+	\item[\cd{scp}] 	At times we will be needing to send files or data to each other for collaboration. How do we do that? EMAIL?! Where's the fun in that? To send a file from one machine to another type \\
+			\cd{scp filename colten1@machine.physics.illinois.edu:/home/colten1/Desktop}, \\
 			where instead of ``machine'' put in the name of the computer you want to send it to. Also you can retrieve a file from another machine using the same command:\\
-			\textbf{scp colten1@machine.physics.illinois.edu:/full/path/to/file /path/to/folder} \\
-			If you want to transfer a directory instead, put an \textbf{-r} after scp
+			\cd{scp colten1@machine.physics.illinois.edu:/full/path/to/file /path/to/folder} \\
+			If you want to transfer a directory instead, put an \cd{-r} after scp
 
 	\item[scripting] Bash supports a few simple common functions like for loop
 		 	and if condition.
 			These function allow you to write more complicated
 			scripts that can perform a series of operations.
-			I'm not going to write
-			down the usage of those function, as most of them you should easily find
-			documentions on google whenever you need them. The only one thing I
+			I'm not going to write down the usage of those function, as most of them you should easily find
+			documentations on google whenever you need them. The only one thing I
 			want mention is that in bash scripts, when you want to refer to a variable
-			you defined earlier, put a dollar sign (\$) in the front. eg. \textbf{var=1; echo \$var}
+			you defined earlier, put a dollar sign (\cd{\$}) in the front. eg. \cd{var=1; echo \$var}
 			
 	\item[Vim]	Get familiar with a terminal-based text editor, such as Vim (some alternatives are Emacs and nano).
-			This will come in very handy for quickly reading/editing files. Vim is quite advanced and there's no need to understand
-			everything (\textit{yet}), but do learn the basics, such as editing and saving files (and exiting out of Vim, of course).
+			This will come in very handy for quickly reading/editing files. Vim is quite advanced and there's no need to understand everything (\textit{yet}), but do learn the basics, such as editing and saving files (and exiting out of Vim, of course).
 			
 			
-	\item[awk (optional)] 	Technically a programming language, but useful for editing text files. 
+	\item[\cd{awk} (optional)] 	Technically a programming language, but useful for editing text files. 
 	       		Ubiquitous in Unix-like systems. This command allows you to perform
 			data extraction based on patterns. A few simple ways of using it will be 
-			\textbf{awk '{print \$2}'} (print 2nd column of a file), and \textbf{awk '!a[\$0]++'} (remove non-consecutive duplicate lines) \\
+			\cd{awk '{print \$2}'} (print 2nd column of a file), and \cd{awk `!a[\$0]++'} (remove non-consecutive duplicate lines) \\
        		   	Refer to http://www.pement.org/awk/awk1line.txt
        		   	
-	\item[sed (optional)] 	Short for `stream editor'. 
+	\item[\cd{sed} (optional)] 	Short for `stream editor'. 
 			This is a very powerful string editing tool which allows you to perform text deleting and modifying operations. \\
            		Refer to http://sed.sourceforge.net/sed1line.txt
         
@@ -94,87 +94,70 @@ You can take your time, but getting these done quickly will make your life easie
     \end{description}
 
 \subsection{Exercises}
-    Quick note: don't spend too much time trying to work these out yourselves if you get stuck; use Google to whenever you need to. These are mainly designed for future reference.
+    Don't spend too much time trying to work these out yourselves; if you get stuck, feel free to use Google to whenever you need to. These are mainly designed for reference.
     \begin{enumerate}
-	\item Use \textbf{wc -l} and \textbf{ls} to count the number of files in a folder.
-	\item Use terminal to remove the extention part of the file name. eg. "foo.txt" -> "foo".
-	\item Use the \textbf{head} and \textbf{tail} command to remove the first and last line of a text file.
-	\item Use \textbf{grep} command to delete all the lines in a text file that contains a specific pattern (say "NaN"). \textit{Hint: \textbf{grep -v}}
-	\item Use sort command (you can look it up on google), sort a text file based on the value in the second column in each line. So your text file has data a matrix form (multiple rows and multiple columns).
-	\item write a bash script that goes through a file and find the max and
-	min value (assume max < 10000 and min > 0) of the data in the
-	third column (hint: awk)
-	\item do the same thing in the previous exercise, but this time you are
-	provided with a series of files (eg. "foo1.txt", "foo2.txt"...), find the
-	max and min over all these files.
-	\item You are given a series of files that are named in numerical order. Write
-	a bash scripts that seperate these files into two folders such that odd-
-	numbered files and even-numbered files are separated. Make sure in
-	new folders, the files are still in correct order. (This script is used to
-	separate the 3D images we filmed for left eye and right eye).
-\end{enumerate}
+	\item Use \cd{wc -l} and \cd{ls} to count the number of files in a folder.
+	\item Use terminal to remove the extention part of the file name. eg. "foo.txt" $\rightarrow$ "foo".
+	\item Use the \cd{head} and \cd{tail} command to remove the first and last line of a text file.
+	\item Use \cd{grep} command to delete all the lines in a text file that contains a specific pattern (say "NaN"). \textit{Hint: \cd{-v}}
+	\item Use \cd{sort} command to sort a text file based on the value in the second column in each line. Assume your text file has multiple rows and columns. \textit{Hint: \cd{-k, -n}}
+    \end{enumerate}
+%	\item write a bash script that goes through a file and find the max and
+%	min value (assume max < 10000 and min > 0) of the data in the
+%	third column (hint: awk)
+%	\item do the same thing in the previous exercise, but this time you are
+%	provided with a series of files (eg. "foo1.txt", "foo2.txt"...), find the
+%	max and min over all these files.
+%	\item You are given a series of files that are named in numerical order. Write
+%	a bash scripts that separate these files into two folders such that odd-
+%	numbered files and even-numbered files are separated. Make sure in
+%	new folders, the files are still in correct order. (This script is used to
+%	separate the 3D images we filmed for left eye and right eye).
 
 	
-            
 
 \section{Basic Imaging}
-The group presently uses VisIt (https://wci.llnl.gov/codes/visit/) to render movies and still images.
-This software is installed on all REU machines, as well as Blue Waters.
-You are encouraged to read the manuals at https://wci.llnl.gov/codes/visit/manuals.html
+The group presently uses VisIt (\cd{https://wci.llnl.gov/codes/visit/}) to render movies and still images. This software is installed on all REU machines, as well as Blue Waters. You are encouraged to read the manuals at:\\
+\cd{https://wci.llnl.gov/codes/visit/manuals.html}\\
 To begin using VisIt, simply type `visit' into a terminal of your choice.
+
 \subsection{Exercises:}
     \begin{enumerate}
-        \item Familiarize yourself with the VTK file format. 
-            Read this. 
-            http://www.vtk.org/VTK/img/file-formats.pdf
-			The purpose of this is \textit{not} to become an expert in VTK. We rarely use the VTK file format, if ever. Instead, this is an exercise in learning something you (presumably) have never seen yourself and touching upon the way data may be stored in large scale projects like ours. Try to get comfortable with it, but don't worry if you don't totally understand it.
-        \item Much more useful to us is the .3d data format. The .3d data format just lists points and scalar data, where each line has the format: x y z scalar. Create a .3d datafile of the scalar field d = $\frac{x^{2}y^{3}}{z^{5}}$ and visualize it in VisIt using three unique colormaps. Be creative and try to explore VisIt's features.
-        \item Next, create and visualize a sphere, using C++ or whatever language you want, with radius 2 at a distance 8 from the origin. 
-            Hint: the Delaunay operator creates a surface from a set of points.
-            \footnote{The Delaunay operator is not enabled in VisIt by default. Turn it on by going to Options > Plugin manager, making sure to save settings. You'll have to restart  VisIt.} 
-            Display the sphere in VisIt and have it rotate about the origin with angular frequency 0.37. Visualize it through two periods.
+%        \item Familiarize yourself with the VTK file format. 
+%            Read this. \\
+%            \cd{http://www.vtk.org/VTK/img/file-formats.pdf}\\
+%			The purpose of this is \textit{not} to become an expert in VTK. We rarely use the VTK file format, if ever. Instead, this is an exercise in learning something you (presumably) have never seen yourself and touching upon the way data may be stored in large scale projects like ours. Try to get comfortable with it, but don't worry if you don't totally understand it.
+        \item Useful to us is the \cd{.3d} data format. The \cd{.3d} data format just contains four columns of the form \cd{x y z scalar}. Create a \cd{.3d} datafile of the scalar field $d = x^2 y^3/z^5$ and visualize it in VisIt using three unique colormaps. Be creative and try to explore VisIt's features.
+        \item Next, create and visualize a sphere, using Python, C++ or whatever language you want, with radius 2 at a distance 8 from the origin. \textit{Hint: the Delaunay operator creates a surface from a set of points.}\footnote{The Delaunay operator is not enabled in VisIt by default. Turn it on by going to Options > Plugin manager, making sure to save settings. You'll have to restart  VisIt.} Display the sphere in VisIt.
         \item You will be given a VTK file representing a vector field. If you don't have it, ask somebody in the group. Visualize the vector field contained in this VTK file. Create seed particles for streamlines and visualize these as well.
     \end{enumerate}
 
 
 
 \section{Advanced Imaging}
-The goal of this section is to get you to use the skills and knowledge
-you have aquired so far. You will do this by visualizing the magnetic
-field of a current loop in two different ways. Upon succesful completion
-of this exercise you should have the necessary background to start learning the daily work of the group. 
-
+The goal of this section is to get you to use the skills and knowledge you have acquired so far. You will do this by visualizing the magnetic field of a current loop in two different ways. Upon successful completion of this exercise you should have the necessary background to start learning the daily work of the group. 
 
 \subsection{Excercise Instuctions:}
 \begin{enumerate}
-    \item First you should generate the x,y,and z components of the magnetic field of a loop of current. 
-        The loop has a current of 4 amps and an area of $4\pi{\normalcolor m^{2}}$ . 
-        Generate this data for an area of 12m x 12m x 12m.
-        The resolution choice is up to you. 
-        However, you will be integrating over this data so choose wisely.
-
+    \item First you should generate the $x$, $y$,and $z$ components of the magnetic field of a loop of current. The loop has a current of 4A and an area of $4\pi m^2$ . Generate this data for an area of 12m$\times$12m$\times$12m. The resolution choice is up to you. However, you will be integrating over this data so choose wisely.
         \begin{itemize}
-            \item Useful equations can be found: http://en.wikipedia.org/wiki/Magnetic\_moment 
-            \item http://en.wikipedia.org/wiki/Biot\%E2\%80\%93Savart\_law
+            \item Useful equations can be found: \cd{http://en.wikipedia.org/wiki/Magnetic\_moment}
+            \item \cd{https://en.wikipedia.org/wiki/Biot-Savart\_law}
             \item Griffiths E+M textbook.
         \end{itemize}
-    \item Your next task is to visualise this field in VisIt. 
-    \item Following that, generate a data file containing a collection of positions corresponding to points on the ring of current.
-        You shall then use these points as seeding points for streamlines. 
-    \item Your next task is to generate your own fieldlines and to visualize them in VisIt. 
-        You will use the seed points from above as starting points for each field line.
-        For the intergration, please implement the fourth order Runge-Kutta method. You can find it on Wikipedia.
+    \item Your next task is to visualize this field in VisIt.
+    \item Following that, generate a data file containing a collection of positions corresponding to points on the ring of current. You shall then use these points as seeding points for streamlines. 
+    \item Your next task is to generate your own field lines and to visualize them in VisIt. You will use the seed points from above as starting points for each field line. For the integration, please implement the fourth order Runge-Kutta method. You can find it on Wikipedia.
 
-    \item Compare your field lines with those generated by VisIt.
-        Then, just play around with the seedpoints until you start to get a feel for them.
-	\item Save a high quality image of the field and steamlines.
+    \item Compare your field lines with those generated by VisIt. Then, just play around with the seed points until you start to get a feel for them.
+    \item Save a high quality image of the field and stream lines.
 %    \item One you have completed all of the above steps in visit, modify the formats of your code output and create the same images using VisIt (by outputting to VTK).
 \end{enumerate}
 
 \section{Gravitational Waves}
 Just as how E-M waves come in two polarizations, so do gravitational waves, namely $h_{+}$ and $h_{\times}$. You will be generating movies of these two polarizations for various systems.
 The data that is obtained from the post-docs to generate gravitational wave movies is called 
-"Psi4\_rad.mon.3". This file contains columns of data. The first column is the time column, and the 
+\cd{Psi4\_rad.mon.3}. This file contains columns of data. The first column is the time column, and the 
 columns after that are coefficients $\psi_{4}^{lm}$ in the equation 
 \begin{equation} \label{eq:psi4}
 \psi_{4}(t,r,\theta,\phi)=\sum_{l=2}^{\infty}\sum_{m=-l}^{l}\psi_{4}^{lm}(t,r)\cdot{}_{-2}Y_{lm}(\theta, \phi),
