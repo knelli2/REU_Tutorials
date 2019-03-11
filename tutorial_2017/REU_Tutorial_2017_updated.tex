@@ -76,8 +76,7 @@ You can take your time, but getting these done quickly will make your life easie
 			want mention is that in bash scripts, when you want to refer to a variable
 			you defined earlier, put a dollar sign (\cd{\$}) in the front. eg. \cd{var=1; echo \$var}
 			
-	\item[Vim]	Get familiar with a terminal-based text editor, such as Vim (some alternatives are Emacs and nano).
-			This will come in very handy for quickly reading/editing files. Vim is quite advanced and there's no need to understand everything (\textit{yet}), but do learn the basics, such as editing and saving files (and exiting out of Vim, of course).
+	\item[Vim]	Get familiar with a terminal-based text editor, such as Vim (some alternatives are Emacs and nano). This will come in very handy for quickly reading/editing files. Vim is quite advanced and there's no need to understand everything (\textit{yet}), but do learn the basics, such as editing and saving files (and exiting out of Vim, of course).
 			
 			
 	\item[\cd{awk} (optional)] 	Technically a programming language, but useful for editing text files. 
@@ -366,11 +365,12 @@ ordnary movie.
 
 
 \section{Blue Waters}
-The size of our simulation data is on the order of terabytes. Thus it requires a mighty machine to both 
+
+\paragraph{}The size of our simulation data is on the order of terabytes. Thus it requires a mighty machine to both 
 store that data, and parse through it quickly. This is where Blue Waters comes in. Each simulation is 
-a couple hundred frames long, and each frame takes about 20 minutes to create. Blue Waters allows us 
+a couple hundred frames long, and each frame takes about 20 minutes to create. Blue Waters allows us to
 generate these frames in a matter of minutes, rather than days. This is done using parallel programming. 
-Read the getting started guide on the blue waters page "https://bluewaters.ncsa.illinois.edu/getting-started".
+Read the getting started guide on the blue waters page \cd{https://bluewaters.ncsa.illinois.edu/getting-started}.
 
 You are now going to edit your movie script so that
 it can be run on Blue Waters. Hopefully by now, you guys have accounts on
@@ -382,8 +382,8 @@ do this. One is to use a terminal command such as scp or rsync. The other is
 a program called globus online.
 
 Globus online should be used for transfering
-large amounts of data because that's how the B dubs guys want you to do it.
-You can use the terminal for smaller files such as scripts seed txt files. Even
+large amounts of data because that's how the BW guys want you to do it.
+You can use the terminal for smaller files such as scripts, seeds, and .txt files. Even
 though your data set is not very large, I'm going to have you transfer the data
 using globus online. Ask me how to do that when you get to this point. Then,
 when you are done with that scp or rsync the rest of your files over.
@@ -404,7 +404,7 @@ the section on visit's command line interface and batch mode. You can use the
 sample .pbs file they give you. With that file in hand, call "qsub myfile.pbs"
 after editing the file.
 
-You can check on your submission with "qstat -u username"
+You can check on your submission with "qstat -u username" (or ask one of the older guys for their \cd{$\sim$/.bashrc} file).
 If that works, now try and "parallelize" your code. More specifically, you
 want to make it so that you can split up the frame making work amongst
 multiple computers.
