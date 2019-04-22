@@ -38,24 +38,16 @@ You can take your time, but getting these done quickly will make your life easie
     \end{itemize}
 
 \section{Linux}
-    	This group uses Linux exclusively. Over the years, you will learn to use it and eventually prefer it over any other operating system. One of the most important and powerful tools you will need to master on Linux is the \textbf{terminal}. How to use terminal will become clear as you work with it. A good way to start is by familiarizing yourselves with the following basic commands (i.e. by googling, etc.): \cd{cd, ls, mkdir, touch, cp, rm} (be \textit{very careful} with this one). A quick way to learn what a command does is to type \cd{man \textbf{commandname}} into the terminal. \\
-    	After that, you can look at some more useful commands below.
+    	This group uses Linux exclusively. Over the years, you will learn to use it and eventually prefer it over any other operating system. One of the most important and powerful tools you will need to master on Linux is the \textbf{terminal}. How to use terminal will become clear as you work with it. A good way to start is by familiarizing yourselves with the following basic commands (i.e. by googling, etc.): \cd{cd, ls, mkdir, touch, cp, rm} (be \textit{very careful} with this one). A quick way to learn what a command does is to type \cd{man \textbf{commandname}} into the terminal. After that, you can look at some more useful commands below.
     \begin{description}
 	\item[\cd{grep}]	This command outputs items that match your input pattern strings.
 			It is very useful in finding files and filter the output of another command
 			when used with pipe (|).
 			eg: \cd{grep 1200 foo.txt} will output the lines that has "1200" in file foo.txt.
 			
-        \item[\cd{pipe (|)}] This command makes compound commands available, allowing you to perform more complicated
-			operations in one command line. It will feed the output of previous command as the input for 
-			the next one. e.g: \cd{ls | grep foo}, this use the output of ls command as the input for grep
-			command. This command line will display the items in current directory that has pattern string "foo" 
-			in it.
+        \item[\cd{pipe (|)}] This command makes compound commands available, allowing you to perform more complicated operations in one command line. It will feed the output of previous command as the input for the next one. e.g: \cd{ls | grep foo}, this use the output of ls command as the input for grep command. This command line will display the items in current directory that has pattern string "foo" in it.
 
-	\item[\cd{redirect (>)}] This command will redirect the output display to another
-			proper place (we usually use this to output into a text file.)
-			e.g \cd{echo hello world > new.txt} will modify the file "new.txt" (or make a new file "new.txt", if it doesn't exist) to have "hello world" as its content.
-			Note that \cd{>} erases the file before writing, while \cd{>{}>} appends to it.
+	\item[\cd{redirect (>)}] This command will redirect the output display to another proper place (we usually use this to output into a text file.) e.g \cd{echo hello world > new.txt} will modify the file "new.txt" (or make a new file "new.txt", if it doesn't exist) to have "hello world" as its content. Note that \cd{>} erases the file before writing, while \cd{>{}>} appends to it.
 
         \item[\cd{sort}] 	What do you think it does?
         
@@ -67,38 +59,24 @@ You can take your time, but getting these done quickly will make your life easie
 			\cd{scp colten1@machine.physics.illinois.edu:/full/path/to/file /path/to/folder} \\
 			If you want to transfer a directory instead, put an \cd{-r} after scp
 
-	\item[scripting] Bash supports a few simple common functions like for loop
-		 	and if condition.
-			These function allow you to write more complicated
-			scripts that can perform a series of operations.
-			I'm not going to write down the usage of those function, as most of them you should easily find
-			documentations on google whenever you need them. The only one thing I
-			want mention is that in bash scripts, when you want to refer to a variable
-			you defined earlier, put a dollar sign (\cd{\$}) in the front. eg. \cd{var=1; echo \$var}
+	\item[scripting] Bash supports a few simple common functions like for loop and if condition. These function allow you to write more complicated scripts that can perform a series of operations. I'm not going to write down the usage of those function, as most of them you should easily find documentations on google whenever you need them. The only one thing I want mention is that in bash scripts, when you want to refer to a variable you defined earlier, put a dollar sign (\cd{\$}) in the front. eg. \cd{var=1; echo \$var}
 			
 	\item[Vim]	Get familiar with a terminal-based text editor, such as Vim (some alternatives are Emacs and nano). This will come in very handy for quickly reading/editing files. Vim is quite advanced and there's no need to understand everything (\textit{yet}), but do learn the basics, such as editing and saving files (and exiting out of Vim, of course).
 			
 			
-	\item[\cd{awk} (optional)] 	Technically a programming language, but useful for editing text files. 
-	       		Ubiquitous in Unix-like systems. This command allows you to perform
-			data extraction based on patterns. A few simple ways of using it will be 
-			\cd{awk '{print \$2}'} (print 2nd column of a file), and \cd{awk `!a[\$0]++'} (remove non-consecutive duplicate lines) \\
-       		   	Refer to http://www.pement.org/awk/awk1line.txt
+	\item[\cd{awk} (optional)] 	Technically a programming language, but useful for editing text files. Ubiquitous in Unix-like systems. This command allows you to perform data extraction based on patterns. A few simple ways of using it will be \cd{awk `{print \$2}'} (print 2nd column of a file), and \cd{awk `!seen[\$0]++'} (remove non-consecutive duplicate lines) \\ Refer to \cd{http://www.pement.org/awk/awk1line.txt}
        		   	
-	\item[\cd{sed} (optional)] 	Short for `stream editor'. 
-			This is a very powerful string editing tool which allows you to perform text deleting and modifying operations. \\
-           		Refer to http://sed.sourceforge.net/sed1line.txt
-        
-	
+	\item[\cd{sed} (optional)] 	Short for `stream editor'. This is a very powerful string editing tool which allows you to perform text deleting and modifying operations. \\ The official documentation is at \cd{http://sed.sourceforge.net/sed1line.txt}, but if you want a guide, I'd recommend looking here: \cd{http://www.grymoire.com/Unix/Sed.html}
     \end{description}
+    Now you should be able to manage your files and manipulate them in a basic way.
 
 \subsection{Exercises}
-    Don't spend too much time trying to work these out yourselves; if you get stuck, feel free to use Google to whenever you need to. These are mainly designed for reference.
+    Don't spend too much time trying to work these out yourselves; if you get stuck, feel free to use Google to whenever you need to. These are mainly designed for pedantic purposes.
     \begin{enumerate}
-	\item Use \cd{wc -l} and \cd{ls} to count the number of files in a folder.
-	\item Use terminal to remove the extention part of the file name. eg. "foo.txt" $\rightarrow$ "foo".
-	\item Use the \cd{head} and \cd{tail} command to remove the first and last line of a text file.
-	\item Use \cd{grep} command to delete all the lines in a text file that contains a specific pattern (say "NaN"). \textit{Hint: \cd{-v}}
+	\item Count the number of files in a folder. 
+	\item Remove the extension part of the file name. eg. "foo.txt" $\rightarrow$ "foo".
+	\item Use the \cd{tail} and \cd{head} command to remove the first and last line of a text file. After that, try using sed.
+	\item Use \cd{grep} command to delete all the lines in a text file that contains a specific pattern (say "NaN"). \textit{Hint: \cd{-v}} (While \cd{sed} can be used, it is much slower for larger files).
 	\item Use \cd{sort} command to sort a text file based on the value in the second column in each line. Assume your text file has multiple rows and columns. \textit{Hint: \cd{-k, -n}}
     \end{enumerate}
 %	\item write a bash script that goes through a file and find the max and
@@ -126,9 +104,9 @@ To begin using VisIt, simply type `visit' into a terminal of your choice.
 %            Read this. \\
 %            \cd{http://www.vtk.org/VTK/img/file-formats.pdf}\\
 %			The purpose of this is \textit{not} to become an expert in VTK. We rarely use the VTK file format, if ever. Instead, this is an exercise in learning something you (presumably) have never seen yourself and touching upon the way data may be stored in large scale projects like ours. Try to get comfortable with it, but don't worry if you don't totally understand it.
-        \item Useful to us is the \cd{.3d} data format. The \cd{.3d} data format just contains four columns of the form \cd{x y z scalar}. Create a \cd{.3d} datafile of the scalar field $d = x^2 y^3/z^5$ and visualize it in VisIt using three unique colormaps. Be creative and try to explore VisIt's features.
-        \item Next, create and visualize a sphere, using Python, C++ or whatever language you want, with radius 2 at a distance 8 from the origin. \textit{Hint: the Delaunay operator creates a surface from a set of points.}\footnote{The Delaunay operator is not enabled in VisIt by default. Turn it on by going to Options > Plugin manager, making sure to save settings. You'll have to restart  VisIt.} Display the sphere in VisIt.
-        \item You will be given a VTK file representing a vector field. If you don't have it, ask somebody in the group. Visualize the vector field contained in this VTK file. Create seed particles for streamlines and visualize these as well.
+        \item Useful to us is the \cd{.3d} data format. The \cd{.3d} data format just contains four columns of the form \cd{x y z scalar}. Create a \cd{.3d} datafile of the scalar field $d = x^2 y^3/z^5$ and visualize it in VisIt using a custom colormaps that you make. Be creative and try to explore VisIt's features.
+        \item Next, create a sphere, using Python, C++ or whatever language you want, with radius 2 at a distance 8 from the origin, and visualize it. \textit{Hint: the Delaunay operator creates a surface from a set of points.}\footnote{The Delaunay operator is not enabled in VisIt by default. You may need to turn it on by going to \textit{Options} > \textit{Plugin manager}, and make sure to save settings. You'll have to restart  VisIt.} Display the sphere in VisIt.
+	\item You will be given an HDF5 file representing a vector field. If you don't have it, ask one of the seniors in the group. Visualize the vector field contained in this HDF5 file with a streamline plot. Create seed particles for streamlines and visualize these as well.
     \end{enumerate}
 
 
@@ -152,6 +130,15 @@ The goal of this section is to get you to use the skills and knowledge you have 
     \item Save a high quality image of the field and stream lines.
 %    \item One you have completed all of the above steps in visit, modify the formats of your code output and create the same images using VisIt (by outputting to VTK).
 \end{enumerate}
+
+
+
+\section{HDF5 data structure}
+This section is written for reference, but can be very useful when you need to manipulate hdf5, or h5, files.
+\subsection{Group}
+	
+
+
 
 \section{Gravitational Waves}
 Just as how E-M waves come in two polarizations, so do gravitational waves, namely $h_{+}$ and $h_{\times}$. You will be generating movies of these two polarizations for various systems.
@@ -366,137 +353,56 @@ ordnary movie.
 
 \section{Blue Waters}
 
-\paragraph{}The size of our simulation data is on the order of terabytes. Thus it requires a mighty machine to both 
-store that data, and parse through it quickly. This is where Blue Waters comes in. Each simulation is 
-a couple hundred frames long, and each frame takes about 20 minutes to create. Blue Waters allows us to
-generate these frames in a matter of minutes, rather than days. This is done using parallel programming. 
-Read the getting started guide on the blue waters page \cd{https://bluewaters.ncsa.illinois.edu/getting-started}.
+\paragraph{}The size of our simulation data is on the order of terabytes. Thus it requires a mighty machine to both store that data, and parse through it quickly. This is where Blue Waters comes in. Each simulation is a couple hundred frames long, and each frame takes about 20 minutes to create. Blue Waters allows us to generate these frames in a matter of minutes, rather than days. This is done using parallel programming. Read the getting started guide on the blue waters page \cd{https://bluewaters.ncsa.illinois.edu/getting-started}.
 
-You are now going to edit your movie script so that
-it can be run on Blue Waters. Hopefully by now, you guys have accounts on
-Blue Waters. If not you can just borrow anyone else's account for the purpose
-of this tutorial.
+You are now going to edit your movie script so that it can be run on Blue Waters. Hopefully by now, you guys have accounts on Blue Waters. If not you can just borrow anyone else's account for the purpose of this tutorial.
 
-The first step is moving your data to Blue Waters. There are two ways to
-do this. One is to use a terminal command such as scp or rsync. The other is
-a program called globus online.
+The first step is moving your data to Blue Waters. There are two ways to do this. One is to use a terminal command such as scp or rsync. The other is a program called globus online. Globus online should be used for transfering large amounts of data because that's how the BW guys want you to do it. You can use the terminal for smaller files such as scripts, seeds, and .txt files. Even though your data set is not very large, I'm going to have you transfer the data using globus online. Ask me how to do that when you get to this point. Then, when you are done with that scp or rsync the rest of your files over. Nodes on blue waters can be thought of as individual computers. There are two types of nodes found on any computing system of this type. The first is a login node. These are the nodes which you automatically ssh onto. The second are the compute nodes.
 
-Globus online should be used for transfering
-large amounts of data because that's how the BW guys want you to do it.
-You can use the terminal for smaller files such as scripts, seeds, and .txt files. Even
-though your data set is not very large, I'm going to have you transfer the data
-using globus online. Ask me how to do that when you get to this point. Then,
-when you are done with that scp or rsync the rest of your files over.
-Nodes on blue waters can be thought of as individual computers. There are
-two types of nodes found on any computing system of this type. The first is a
-login node. These are the nodes which you automatically ssh onto. The second
-are the compute nodes.
+You can't log on to these nodes but you can use a command called qsub to submit jobs. The jobs are submitted to a queue and run when its your turn. The default compute node has something like 32GB of RAM split up between 16 processor cores. These nodes are all connected with a very fast ethernet connection so they can send data to each other really fast. They are also all connected to the same data on disk as well. Change your .py script so that the files you access correspond to where you data is on bw. Then go here https://bluewaters.ncsa.illinois.edu/visit and read the section on visit's command line interface and batch mode. You can use the sample .pbs file they give you. With that file in hand, call "qsub myfile.pbs" after editing the file.
 
-You can't log on to these nodes but you can use a
-command called qsub to submit jobs. The jobs are submitted to a queue and
-run when its your turn. The default compute node has something like 32GB of
-RAM split up between 16 processor cores. These nodes are all connected with
-a very fast ethernet connection so they can send data to each other really fast.
-They are also all connected to the same data on disk as well.
-change your .py script so that the files you access correspond to where you
-data is on bw. Then go here https://bluewaters.ncsa.illinois.edu/visit and read
-the section on visit's command line interface and batch mode. You can use the
-sample .pbs file they give you. With that file in hand, call "qsub myfile.pbs"
-after editing the file.
-
-You can check on your submission with "qstat -u username" (or ask one of the older guys for their \cd{$\sim$/.bashrc} file).
-If that works, now try and "parallelize" your code. More specifically, you
-want to make it so that you can split up the frame making work amongst
-multiple computers.
-For example, say your dataset has 200 timesteps.
-You
-have 4 computers. That means you'll probably want to give each computer 50
-timessteps to make pictures from. Make adjustments in your code so that when
-given the total number of computers and the computer number (we'll call it
-rank), you'll successfully split up the work and output frames for you movie.
-In our example, we have 4 computers total.
-One computer will have rank 0,
-another will have rank 1, etc. However, don't hardcode these numbers directly.
-Keep them as variables which you can pass to your script. To access them in
-your code, use sys.argv. If these concepts don't make sense, feel free to ask me
-for clarification.
+You can check on your submission with "qstat -u username" (or ask one of the older guys for their \cd{$\sim$/.bashrc} file). If that works, now try and "parallelize" your code. More specifically, you want to make it so that you can split up the frame making work amongst multiple computers. For example, say your dataset has 200 timesteps. You have 4 computers. That means you'll probably want to give each computer 50 timessteps to make pictures from. Make adjustments in your code so that when given the total number of computers and the computer number (we'll call it rank), you'll successfully split up the work and output frames for you movie. In our example, we have 4 computers total. One computer will have rank 0, another will have rank 1, etc. However, don't hardcode these numbers directly. Keep them as variables which you can pass to your script. To access them in your code, use \verb|sys.argv|. If these concepts don't make sense, feel free to ask me for clarification.
 
 \subsection{Selected Exercises:}
 \begin{enumerate}
-\item Log into Blue Waters using "ssh -X ``username'@bw.ncsa.illinois.edu''
-\item Open Visit using ''module load visit; visit''. Check the settings to ensure that the Delaunay operator is loaded. Close VisIt.
+\item Log into Blue Waters using \cd{ssh -X <username>@bw.ncsa.illinois.edu}
+\item Open Visit using \cd{module load visit; visit}. Check the settings to ensure that the Delaunay operator is loaded. Close VisIt.
 \item Make a batch script following the recipe found online, and submit it to the blue waters job queue.
 \item Bask in the glory of your life because you're using a heavenly supercomputer.
 \end{enumerate}
 
 
 \section{Particle Picker}
-We need particles to create a seeding points for magnetic fieldlines and to create particle movies. 
-You will get a raw data file for particle position at all time, usually named as "bhns-particles.mon" 
-or "particles.mon". Our task is to choose some useful particles, and convert the file into a format 
-that is readable in VisIt. This can be done by using the particle picker module.
+We need particles to create a seeding points for magnetic fieldlines and to create particle movies. You will get a raw data file for particle position at all time, usually named as \verb|bhns-particles.mon| or \verb|particles.mon|. Our task is to choose some useful particles, and convert the file into a format that is readable in VisIt. This can be done by using the particle picker module.
         
-You will need to transfer the abid bot to your Blue Waters. This is the ultimate code that you will 
-be working with most of the time. For now we will skip most of the features and focus on particle 
-picker module. The module is located in \verb|<path to your abid bot>/bin/particle_code/|. But there are a 
-few steps you need to do before getting there.
+You will need to transfer the abid bot to your Blue Waters. This is the ultimate code that you will be working with most of the time. For now we will skip most of the features and focus on particle picker module. The module is located in \verb|/path/to/your/abid/bot/bin/particle_code/|. But there are a few steps you need to do before getting there.
 
-        \begin{enumerate}
-            \item Ask for the "particles.mon" file from previous REU members. Then copy it to 
-\verb|<path to your abid bot>/h5data/|. Note that you need to rename it to "particles.mon" if it is named differently.
-            \item Change parameters inside the file \verb|<path to your abid bot>/params|. We are going to 
-work with particle seeds, so set fields=true, particleSeeds=true, and updateParticleMon=true. Other 
-parameters will be different from case to case. Ask others if you are stuck here for too long.
-            \item Now setup the parameters. First, enter ". params" in command line. This will save 
-parameters that you specified in params on your current shell. Next, normally you will run the 
-setup.sh script to set everything. But since we are only doing particle picker, you can run abid bot 
-partially by going into bin folder and run ". setup\_seeds.sh". This step will take considerably long 
-time, usually about 1+ min per GB of your particles.mon file. After this is done, go to 
-\verb|<path to your abid bot>/bin/particle_code/| and check "dat" folder. You should have a 
-bunch of files with the name like "00012.34567000000.dat" and the name of your first file should be 
-"(firstTime).dat". If you get this then Cheers!, you've finished the most time consuming part of particle 
-picker. Set updateParticleMon=false in params to skip this part in future runs, as it is only necessary to do so once.
-        \end{enumerate}
+    \begin{enumerate}
+        \item Ask for the \verb|particles.mon| file from previous REU members. Then copy it to 
+\verb|/path/to/your/abid/bot/h5data/|. Note that you need to rename it to \verb|particles.mon| if it is named differently.
+        \item Change parameters inside the file \verb|/path/to/your/abid/bot/params|. We are going to work with particle seeds, so set \verb|fields=true|, \verb|particleSeeds=true|, and \verb|updateParticleMon=true|. Other parameters will be different from case to case. Ask others if you are stuck here for too long.
+        \item Now setup the parameters. First, enter \verb|params| in command line. This will save parameters that you specified in params on your current shell. Next, normally you will run the \verb|setup.sh| script to set everything. But since we are only doing particle picker, you can run abid bot partially by going into bin folder and run \verb|setup_seeds.sh|. This step will take considerably long time, usually about 1+ min per GB of your particles.mon file. After this is done, go to \verb|/path/to/your/abid/bot/bin/particle_code/| and check \verb|dat| folder. You should have a bunch of files with the name like \verb|00012.34567000000.dat| and the name of your first file should be \verb|<firstTime>.dat|. If you get this, then cheers!, you've finished the most time consuming part of particle picker. Set \verb|updateParticleMon=false| in params to skip this part in future runs, as it is only necessary to do so once.
+    \end{enumerate}
 
-Now go to \verb|<path to your abid bot>/bin/particle_code/|. There are three files involving particle picker: 
-particlePicker.py, particlePicker-tracer.py, and particlePickerModule.py. Do not edit the particlePickerModule.py 
-unless you know what you are doing. By all means, I encourage you to take a look inside and try to 
-understand the module. The file you will be editing is either particlePicker.py or particlePicker-tracer.py. 
-They are exactly the same except that the tracer one save files in .3d format instead of .txt. These 
-script will pick particles based on your criteria. There are currently two methods to choose particles: 
-findInVolume and nearestNeighbor. Details for these methods are in particlePickerModule.py.
+Now go to \verb|/path/to/your/abid/bot/bin/particle_code/|. There are three files involving particle picker: \verb|particlePicker.py|, \verb|particlePicker-tracer.py|, and \verb|particlePickerModule.py|. Do not edit the \verb|particlePickerModule.py| unless you know what you are doing. By all means, I encourage you to take a look inside and try to understand the module. The file you will be editing is either \verb|particlePicker.py| or \verb|particlePicker-tracer.py|. They are exactly the same except that the tracer one save files in \verb|.3d| format instead of \verb|.txt|. These script will pick particles based on your criteria. There are currently two methods to choose particles: \verb|findInVolume| and \verb|nearestNeighbor|. Details for these methods are in \verb|particlePickerModule.py|.
 
-Your task for this part is to make a simple particle tracer movie (only particle, without density and 
-fieldlines). If you don't know what it is, please see \verb|http://research.physics.illinois.edu/cta/movies/NSNS_high_res/particles_ext.html|. 
-You will have to edit particlePicker-tracer.py, set particleTracer=true in params, run ". params", and 
-run ". setup\_seeds.py". If it is working correctly, you will get trace*.3d files inside trace1 folder. 
-Copy these files to your local machine and open them in VisIt (You may need to rename them so that 
-VisIt can see them as a database). Then plot them using Pseudocolor plot. I will let you play with 
-VisIt and figure how to create a movie from here. 
+Your task for this part is to make a simple particle tracer movie (only particle, without density and fieldlines). If you don't know what it is, please see \verb|http://research.physics.illinois.edu/cta/movies/NSNS_high_res/particles_ext.html|. You will have to edit \verb|particlePicker-tracer.py|, set \verb|particleTracer=true| in params, run \verb|params|, and run \verb|setup_seeds.sh|. If it is working correctly, you will get \verb|trace*.3d| files inside trace1 folder. Copy these files to your local machine and open them in VisIt (You may need to rename them so that VisIt can see them as a database). Then plot them using Pseudocolor plot. I will let you play with VisIt and figure how to create a movie from here. 
 
 \section{The Final Task}
-It's now time for you to get your hands on some real data. Ask one of the senior members to provide you with an old case to work with.
-This step can only be done on Blue Waters, as the data is too big for our local machines. While the data is transferring on your BW, transfer the 
-file abid\_bot.tar.gz file there if you have not done so. Go through the package (hint: README is a good place to start)
-and try to understand what's going on in different parts. Use this code to make a movie. This movie will be your certificate that you've successfully completed the 
-tutorial.
+It's now time for you to get your hands on some real data. Ask one of the senior members to provide you with an old case to work with. This step can only be done on Blue Waters, as the data is too big for our local machines. While the data is transferring on your BW, transfer the file \verb|abid_bot.tar.gz| file there if you have not done so. Go through the package (hint: README is a good place to start) and try to understand what's going on in different parts. Use this code to make a movie. This movie will be your certificate that you've successfully completed the tutorial.
 
 \section{Bonus: Another Dimension}
 Let's redo the Final Task, but this time in 3D! Before beginning, ask a senior member to play a sample 3D movie created with VisIt.
 
 \subsection{3D Movie exercise:}
 \begin{enumerate}
-\item The *.png generating process is almost identical to the previous section, and you may make the 3D movie using the same data. In run\_movie\_ranks.py (found in abid\_bot/bin/bw\_many\_folder\_scripts/), simply enable the "stereo" SaveWindowAttribute.
-\item You may want to change the view to one that works better with 3D. The file containing the view attributes is specified in params, and you can change this to your own view .xml file. One attribute you can try changing is the eyeAngle. Hint: Open a single frame of your movie in VisIt, and change the view to your liking. Then you can export the View3DAttributes to an .xml using the SaveAttribute() function. See the VisIt Python Interface Manual for more details.
-\item Use the abid\_bot code to generate *.png images as before.
-\item To turn your images into a .mp4 movie, you will need to run two scripts: merge\_3D.sh, and then Movie\_maker\_3D.sh. You can transfer your movies/ folder from Blue Waters to your computer if you'd like to run the scripts locally. Before running the scripts look them over and make neccessary changes. If you don't have the scripts ask a group member.
-\item You should now have a .mp4 movie. To play it, you can use the command "mplayer filename". To actually see the movie in 3D, you'll need special equipment- ask a senior member for help. You now have a 3D movie worthy of IMAX.
+\item The *.png generating process is almost identical to the previous section, and you may make the 3D movie using the same data. In \verb|run_movie_ranks.py| (found in \verb|abid_bot/bin/bw_many_folder_scripts/|), simply enable the "stereo" option in SaveWindowAttribute.
+\item You may want to change the view to one that works better with 3D. The file containing the view attributes is specified in params, and you can change this to your own view .xml file. One attribute you can try changing is the eyeAngle. Hint: Open a single frame of your movie in VisIt, and change the view to your liking. Then you can export the View3DAttributes to an \verb|.xml| using the \verb|SaveAttribute()| function. See the VisIt Python Interface Manual for more details.
+\item Use the abid\_bot code to generate \verb|*.png| images as before.
+\item To turn your images into an mp4 movie, you will need to run two scripts: \verb|merge_3D.sh|, and then \verb|Movie_maker_3D.sh|. You can transfer your \verb|movies/| folder from Blue Waters to your computer if you'd like to run the scripts locally. Before running the scripts look them over and make neccessary changes. If you don't have the scripts ask a group member.
+\item You should now have an mp4 movie. To play it, you can use the command \verb|mplayer filename|. To actually see the movie in 3D, you'll need special equipment -- ask a senior member for help. You now have a 3D movie worthy of IMAX.
 \end{enumerate}
 
 \section{Final Thoughts}
-Congratulations! While there are a couple
-of things that you will need to do, such as working with kdenlive
-and editing the website, those things are best taught by joining in the
-next time the group as a whole needs to use those tools. You should
-now be ready to jump right in to the group and start making science!
+Congratulations! While there are a couple of things that you will need to do, such as working with kdenlive and editing the website, those things are best taught by joining in the next time the group as a whole needs to use those tools. You should now be ready to jump right in to the group and start making science!
 \end{document}
